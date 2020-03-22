@@ -169,12 +169,16 @@ export const DashBoard = ({ generalData, countries }) => {
             </Col>
             <Col xs={3} md={2} className={"col-item"}>
               <div className="country-data-item success">
-                <p className="titile">85%</p>
+                <p className="titile">
+                  {((country.recovered * 100) / country.cases).toFixed(2)}%
+                </p>
               </div>
             </Col>
             <Col xs={3} md={2} className={"col-item"}>
               <div className="country-data-item warning">
-                <p className="titile">5.5%</p>
+                <p className="titile">
+                  {((country.deaths * 100) / country.cases).toFixed(2)}%
+                </p>
               </div>
             </Col>
           </Row>
