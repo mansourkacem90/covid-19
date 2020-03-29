@@ -5,6 +5,7 @@ var n = require("country-js");
 
 export const DashBoard = ({ generalData, countries }) => {
   const [nations, setNations] = useState([]);
+  const [setLang, triggerLang] = useState(false);
   useEffect(() => {
     setNations([...countries]);
   }, [countries]);
@@ -85,6 +86,48 @@ export const DashBoard = ({ generalData, countries }) => {
   return (
     <Container className={"cont"}>
       <Row>
+        <Col xs={12} md={12}>
+          <div className={"header-bar"}>
+            <div className="nav-wrapper">
+              <div className="sl-nav">
+                Lang:
+                <ul>
+                  <li onClick={() => triggerLang(!setLang)}>
+                    <>
+                      <b style={{ marginLeft: "8px" }}> En </b>
+                      <i className="sl-flag flag-de"></i>
+                    </>
+                    <i
+                      className="angle fa fa-angle-down"
+                      aria-hidden="true"
+                    ></i>
+                    {setLang && (
+                      <>
+                        <div className="triangle"></div>
+                        <ul>
+                          <li onClick={() => console.log("french")}>
+                            <i className="sl-flag flag-de">
+                              <div id="germany"></div>
+                            </i>{" "}
+                            <span className="active">French</span>
+                          </li>
+                          <li onClick={() => console.log("english")}>
+                            <i className="sl-flag flag-usa">
+                              <div id="germany"></div>
+                            </i>{" "}
+                            <span>Englisch</span>
+                          </li>
+                        </ul>
+                      </>
+                    )}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      <Row>
         <Col xs={12} md={4}>
           <h1 className="heading-one">Coronavirus COVID-19 </h1>
           <h1 className="heading-two">Last Total Statistics</h1>
@@ -110,11 +153,14 @@ export const DashBoard = ({ generalData, countries }) => {
       </Row>
       <Row>
         <Col md={12} xs={12}>
-          <input
-            className="input-box"
-            placeholder="Search Country...."
-            onChange={handleSearch}
-          />
+          <div className="form-group has-search">
+            <input
+              className="input-box"
+              placeholder="Search Country...."
+              onChange={handleSearch}
+            />
+            <i className="fa">&#xf002;</i>
+          </div>
         </Col>
       </Row>
       <Row className={"table-header"}>
