@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./styles.scss";
+import { translationContext } from "./App";
+
 var n = require("country-js");
 
 export const DashBoard = ({ generalData, countries }) => {
+  const { t, i18n } = React.useContext(translationContext);
   const [nations, setNations] = useState([]);
   const [setLang, triggerLang] = useState(false);
+  const [lang, setLanguage] = useState("en");
   useEffect(() => {
     setNations([...countries]);
   }, [countries]);
@@ -94,8 +98,19 @@ export const DashBoard = ({ generalData, countries }) => {
                 <ul>
                   <li onClick={() => triggerLang(!setLang)}>
                     <>
-                      <b style={{ marginLeft: "8px" }}> En </b>
-                      <i className="sl-flag flag-de"></i>
+                      <b
+                        style={{
+                          margin: "0px 8px",
+                          textTransform: "capitalize"
+                        }}
+                      >
+                        {lang}
+                      </b>
+                      <i
+                        className={`sl-flag flag-${
+                          lang === "en" ? "usa" : "de"
+                        }`}
+                      ></i>
                     </>
                     <i
                       className="angle fa fa-angle-down"
@@ -105,13 +120,23 @@ export const DashBoard = ({ generalData, countries }) => {
                       <>
                         <div className="triangle"></div>
                         <ul>
-                          <li onClick={() => console.log("french")}>
+                          <li
+                            onClick={() => {
+                              setLanguage("fr");
+                              i18n.changeLanguage("fr");
+                            }}
+                          >
                             <i className="sl-flag flag-de">
                               <div id="germany"></div>
                             </i>{" "}
                             <span className="active">French</span>
                           </li>
-                          <li onClick={() => console.log("english")}>
+                          <li
+                            onClick={() => {
+                              setLanguage("en");
+                              i18n.changeLanguage("en");
+                            }}
+                          >
                             <i className="sl-flag flag-usa">
                               <div id="germany"></div>
                             </i>{" "}
@@ -130,23 +155,37 @@ export const DashBoard = ({ generalData, countries }) => {
       <Row>
         <Col xs={12} md={4}>
           <h1 className="heading-one">Coronavirus COVID-19 </h1>
-          <h1 className="heading-two">Last Total Statistics</h1>
+          <h1 className="heading-two">{t("subtitle",{
+                framework: "react-i18next"
+              })}</h1>
         </Col>
         <Col xs={4} md={2}>
           <div className="case">
-            <p className="caption primary">Total Cases</p>
+            <p className="caption primary">
+              {t("global_statistics.total_cases", {
+                framework: "react-i18next"
+              })}
+            </p>
             <p className="title-large primary">{generalData.cases}</p>
           </div>
         </Col>
         <Col xs={4} md={2}>
           <div className="case">
-            <p className="caption success">Recovery Rate</p>
+            <p className="caption success">
+              {t("global_statistics.recovery_rate", {
+                framework: "react-i18next"
+              })}
+            </p>
             <p className="title-large  success">{generalData.recovered} %</p>
           </div>
         </Col>
         <Col xs={4} md={2}>
           <div className="case">
-            <p className="caption warning">Death Rate</p>
+            <p className="caption warning">
+              {t("global_statistics.death_rate", {
+                framework: "react-i18next"
+              })}
+            </p>
             <p className="title-large warning">{generalData.deaths} %</p>
           </div>
         </Col>
@@ -165,19 +204,29 @@ export const DashBoard = ({ generalData, countries }) => {
       </Row>
       <Row className={"table-header"}>
         <Col md={4}>
-          <p className="caption-table">Country</p>
+          <p className="caption-table">{t("table_header.country", {
+                framework: "react-i18next"
+              })}</p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">Cases</p>
+          <p className="caption-table">{t("table_header.cases", {
+                framework: "react-i18next"
+              })}</p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">Recovered</p>
+          <p className="caption-table">{t("table_header.recovered", {
+                framework: "react-i18next"
+              })}</p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">Recovery Rate</p>
+          <p className="caption-table">{t("table_header.recovered_rate", {
+                framework: "react-i18next"
+              })}</p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">Death Rate</p>
+          <p className="caption-table">{t("table_header.death_rate", {
+                framework: "react-i18next"
+              })}</p>
         </Col>
       </Row>
       {nations.map((country, ind) => {

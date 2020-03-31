@@ -4,13 +4,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import styles from "./styles.scss";
 import { getGeneralData } from "./api/api";
 import { DashBoard } from "./dash-board";
+import { withTranslation } from "react-i18next";
 
-function App() {
+export const translationContext = React.createContext();
+
+const App = ({ t, i18n }) => {
   const [generalData, setGeneralData] = useState({
     cases: 0,
     deaths: 0,
     recovered: 0
   });
+
   const [countries, setCountries] = useState([]);
   useEffect(() => {
     getGeneralData("/all").then(({ cases, deaths, recovered }) => {
@@ -23,8 +27,16 @@ function App() {
     });
     getGeneralData("/countries").then(res => setCountries(res));
   }, []);
+  return (
+    <translationContext.Provider
+      value={{
+        t,
+        i18n
+      }}
+    >
+      <DashBoard generalData={generalData} countries={countries} />
+    </translationContext.Provider>
+  );
+};
 
-  return <DashBoard generalData={generalData} countries={countries} />;
-}
-
-export default App;
+export default withTranslation("common")(App);

@@ -1,0 +1,15 @@
+{
+  "subtitle":"Dernières statistiques",
+  "global_statistics": {
+    "total_cases": "Nombre total des cas",
+    "recovery_rate": "Taux de récupération",
+    "death_rate": "Taux de mortalité"
+  },
+  "table_header":{
+    "country":"Pays",
+    "cases":"Nombre des cas total",
+    "recovered":"Rétablis",
+    "recovered_rate":"Taux de récupération",
+    "death_rate":"Taux de mortalité"
+  }
+}

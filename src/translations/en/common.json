@@ -1,0 +1,15 @@
+{
+  "subtitle":"Last Total Statistics",
+  "global_statistics": {
+    "total_cases": "Total Cases",
+    "recovery_rate": "Recovery Rate",
+    "death_rate": "Death Rate"
+  },
+  "table_header":{
+    "country":"Country",
+    "cases":"Cases",
+    "recovered":"Recovered",
+    "recovered_rate":"Recovery Rate",
+    "death_rate":"Death Rate"
+  }
+}

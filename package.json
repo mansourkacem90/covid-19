@@ -8,10 +8,12 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
     "country-js": "^0.0.9",
+    "i18next": "^19.3.4",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.3.4",
     "react-scripts": "3.4.1"
   },
   "scripts": {
