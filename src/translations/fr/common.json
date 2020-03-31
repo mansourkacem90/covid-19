@@ -1,5 +1,6 @@
 {
   "subtitle":"Dernières statistiques",
+  "search_country":"Recherche Pays...",
   "global_statistics": {
     "total_cases": "Nombre total des cas",
     "recovery_rate": "Taux de récupération",

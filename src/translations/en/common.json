@@ -1,5 +1,6 @@
 {
   "subtitle":"Last Total Statistics",
+  "search_country":"Search Country...",
   "global_statistics": {
     "total_cases": "Total Cases",
     "recovery_rate": "Recovery Rate",

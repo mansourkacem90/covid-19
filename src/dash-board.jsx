@@ -195,7 +195,9 @@ export const DashBoard = ({ generalData, countries }) => {
           <div className="form-group has-search">
             <input
               className="input-box"
-              placeholder="Search Country...."
+              placeholder={t("search_country", {
+                framework: "react-i18next"
+              })}
               onChange={handleSearch}
             />
             <i className="fa">&#xf002;</i>
