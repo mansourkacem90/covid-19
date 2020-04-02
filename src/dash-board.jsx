@@ -243,7 +243,7 @@ export const DashBoard = ({ generalData, countries }) => {
                   width="50px"
                   alt="flag"
                 />
-                <p className="titile">{country.country}</p>
+                <p className="titile">{country.country.replace('Israel','الخنازير')}</p>
               </div>
             </Col>
             <Col xs={3} md={2} className={"col-item"}>
