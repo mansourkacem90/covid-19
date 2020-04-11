@@ -12,7 +12,7 @@ import {
   // Redirect,
 } from "react-router-dom";
 
-const App = ({ t, i18n }) => {
+const App = () => {
   return (
     <Router>
       <Switch>

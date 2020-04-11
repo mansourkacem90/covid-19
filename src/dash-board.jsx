@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./styles.scss";
 import { translationContext } from "./components/home";
-
+import { Link } from "react-router-dom";
 var n = require("country-js");
 
 export const DashBoard = ({ generalData, countries }) => {
@@ -92,6 +92,9 @@ export const DashBoard = ({ generalData, countries }) => {
       <Row>
         <Col xs={12} md={12}>
           <div className={"header-bar"}>
+            <div>
+              <Link to={"/map"}>Tunisia Data</Link>
+            </div>
             <div className="nav-wrapper">
               <div className="sl-nav">
                 Lang:
