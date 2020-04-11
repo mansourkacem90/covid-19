@@ -1,51 +1,55 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.scss";
 import { provinces } from "./provinces";
 import * as d3 from "d3";
-
+import { Link } from "react-router-dom";
 export const Tunisia = () => {
   const [tooltipVisibility, setTooltip] = useState(false);
   const [selectedProvince, setProvince] = useState(null);
+  useEffect(() => {
+    for (let i = 1; i <= 27; i++) {
+      d3.select("#path" + i).on("click", function (d, ind) {
+        //setTooltip(false);
+        console.log("hhhhh");
 
-  for (let i = 1; i <= 27; i++) {
-    d3.select("#path" + i).on("click", function (d, ind) {
-      //setTooltip(false);
-      setProvince(provinces[i]);
-      setTooltip(true);
-    });
-    d3.select("#path" + i).on("mousemove", function (d, ind) {
-      const cc = d3.mouse(this);
-      setTooltip(true);
-
-      if (i === 4) {
-        setProvince(provinces[13]);
-      } else if (i === 3) {
-        setProvince(provinces[8]);
-      } else {
         setProvince(provinces[i]);
-      }
-      let assba = document.getElementById("assba");
-      assba.style.display = "flex";
-      assba.style.left = cc[0] - 60 + "px";
-      if (cc[1] < 140) {
-        assba.style.top = cc[1] + 30 + "px";
-        d3.select(".assba").attr("class", "assba assba-bottom");
-      } else {
-        assba.style.top = cc[1] - 130 + "px";
-        d3.select(".assba").attr("class", "assba assba-top");
-      }
-    });
-    d3.select("#path" + i).on("mouseover", () => {
-      setTooltip(true);
-    });
-    d3.select("svg").on("mouseout", () => {
-      setTooltip(false);
-    });
-  }
+        setTooltip(true);
+      });
+      d3.select("#path" + i).on("mousemove", function (d, ind) {
+        const cc = d3.mouse(this);
+        setTooltip(true);
+
+        if (i === 4) {
+          setProvince(provinces[13]);
+        } else if (i === 3) {
+          setProvince(provinces[8]);
+        } else {
+          setProvince(provinces[i]);
+        }
+        let assba = document.getElementById("assba");
+        assba.style.display = "flex";
+        assba.style.left = cc[0] - 60 + "px";
+        if (cc[1] < 140) {
+          assba.style.top = cc[1] + 30 + "px";
+          d3.select(".assba").attr("class", "assba assba-bottom");
+        } else {
+          assba.style.top = cc[1] - 130 + "px";
+          d3.select(".assba").attr("class", "assba assba-top");
+        }
+      });
+      d3.select("#path" + i).on("mouseover", () => {
+        setTooltip(true);
+      });
+      d3.select("svg").on("mouseout", () => {
+        setTooltip(false);
+      });
+    }
+  }, [tooltipVisibility]);
 
   return (
     <>
       <div className={"map-container"} id="hhh">
+        <Link to={"/"}>Return</Link>
         {tooltipVisibility && (
           <div className={"assba"} id={"assba"}>
             <div className={"header"}>

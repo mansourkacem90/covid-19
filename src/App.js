@@ -16,10 +16,12 @@ const App = () => {
   return (
     <Router>
       <Switch>
+        <Route exact path={"/map"}>
+          <Tunisia />
+        </Route>
         <Route exact path={"/"}>
           <HomePage />
         </Route>
-        <Route exact path={"/map"} component={Tunisia} />
       </Switch>
     </Router>
   );
