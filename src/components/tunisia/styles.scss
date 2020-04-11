@@ -1,0 +1,70 @@
+$base-color: rgb(124, 7, 24);
+.assba {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 6px;
+  padding: 4px;
+  .header {
+    border-bottom: 1px solid rgb(201, 198, 198);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  &.assba-top::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+  }
+  &.assba-bottom::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+  }
+}
+.assba-top::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 540px;
+  height: 100%;
+  background-color: #ffffff;
+  .prov {
+    //fill: transparent;
+    stroke: #fff;
+    stroke-width: 0.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    @for $i from 0 through 27 {
+      &.prov#{$i} {
+        fill: lighten($base-color, $i * 2%);
+        cursor: pointer;
+      }
+    }
+  }
+}

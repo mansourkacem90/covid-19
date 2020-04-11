@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./styles.scss";
-import { translationContext } from "./App";
+import { translationContext } from "./components/home";
 
 var n = require("country-js");
 
@@ -13,15 +13,15 @@ export const DashBoard = ({ generalData, countries }) => {
   useEffect(() => {
     setNations([...countries]);
   }, [countries]);
-  const handleSearch = evt => {
+  const handleSearch = (evt) => {
     let arr = [...countries];
     let newArr = [];
-    newArr = arr.filter(val =>
+    newArr = arr.filter((val) =>
       val.country.toLowerCase().includes(evt.target.value.toLowerCase())
     );
     setNations([...newArr]);
   };
-  const getCode = name => {
+  const getCode = (name) => {
     if (n.search(name)[0]) {
       return n.search(name.replace("UK", "GB"))[0].code;
     } else {
@@ -101,7 +101,7 @@ export const DashBoard = ({ generalData, countries }) => {
                       <b
                         style={{
                           margin: "0px 8px",
-                          textTransform: "capitalize"
+                          textTransform: "capitalize",
                         }}
                       >
                         {lang}
@@ -155,15 +155,17 @@ export const DashBoard = ({ generalData, countries }) => {
       <Row>
         <Col xs={12} md={4}>
           <h1 className="heading-one">Coronavirus COVID-19 </h1>
-          <h1 className="heading-two">{t("subtitle",{
-                framework: "react-i18next"
-              })}</h1>
+          <h1 className="heading-two">
+            {t("subtitle", {
+              framework: "react-i18next",
+            })}
+          </h1>
         </Col>
         <Col xs={4} md={2}>
           <div className="case">
             <p className="caption primary">
               {t("global_statistics.total_cases", {
-                framework: "react-i18next"
+                framework: "react-i18next",
               })}
             </p>
             <p className="title-large primary">{generalData.cases}</p>
@@ -173,7 +175,7 @@ export const DashBoard = ({ generalData, countries }) => {
           <div className="case">
             <p className="caption success">
               {t("global_statistics.recovery_rate", {
-                framework: "react-i18next"
+                framework: "react-i18next",
               })}
             </p>
             <p className="title-large  success">{generalData.recovered} %</p>
@@ -183,7 +185,7 @@ export const DashBoard = ({ generalData, countries }) => {
           <div className="case">
             <p className="caption warning">
               {t("global_statistics.death_rate", {
-                framework: "react-i18next"
+                framework: "react-i18next",
               })}
             </p>
             <p className="title-large warning">{generalData.deaths} %</p>
@@ -196,7 +198,7 @@ export const DashBoard = ({ generalData, countries }) => {
             <input
               className="input-box"
               placeholder={t("search_country", {
-                framework: "react-i18next"
+                framework: "react-i18next",
               })}
               onChange={handleSearch}
             />
@@ -206,29 +208,39 @@ export const DashBoard = ({ generalData, countries }) => {
       </Row>
       <Row className={"table-header"}>
         <Col md={4}>
-          <p className="caption-table">{t("table_header.country", {
-                framework: "react-i18next"
-              })}</p>
+          <p className="caption-table">
+            {t("table_header.country", {
+              framework: "react-i18next",
+            })}
+          </p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">{t("table_header.cases", {
-                framework: "react-i18next"
-              })}</p>
+          <p className="caption-table">
+            {t("table_header.cases", {
+              framework: "react-i18next",
+            })}
+          </p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">{t("table_header.recovered", {
-                framework: "react-i18next"
-              })}</p>
+          <p className="caption-table">
+            {t("table_header.recovered", {
+              framework: "react-i18next",
+            })}
+          </p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">{t("table_header.recovered_rate", {
-                framework: "react-i18next"
-              })}</p>
+          <p className="caption-table">
+            {t("table_header.recovered_rate", {
+              framework: "react-i18next",
+            })}
+          </p>
         </Col>
         <Col md={2}>
-          <p className="caption-table">{t("table_header.death_rate", {
-                framework: "react-i18next"
-              })}</p>
+          <p className="caption-table">
+            {t("table_header.death_rate", {
+              framework: "react-i18next",
+            })}
+          </p>
         </Col>
       </Row>
       {nations.map((country, ind) => {
