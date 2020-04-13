@@ -28,7 +28,7 @@ export const Tunisia = () => {
         }
         let assba = document.getElementById("assba");
         assba.style.display = "flex";
-        assba.style.left = cc[0] - 60 + "px";
+        assba.style.left = cc[0] + "px";
         if (cc[1] < 140) {
           assba.style.top = cc[1] + 30 + "px";
           d3.select(".assba").attr("class", "assba assba-bottom");

@@ -16,11 +16,11 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path={"/map"}>
-          <Tunisia />
-        </Route>
-        <Route exact path={"/"}>
+        <Route path={"/"}>
           <HomePage />
+        </Route>
+        <Route path={"/map"}>
+          <Tunisia />
         </Route>
       </Switch>
     </Router>
